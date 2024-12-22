@@ -97,20 +97,37 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         ID.setPreferredWidth(40);
 
         TableColumn Nome = tblIndividuo.getColumnModel().getColumn(1);
-        Nome.setMinWidth(200);
-        Nome.setMaxWidth(200);
-        Nome.setPreferredWidth(200);
+        Nome.setMinWidth(150);
+        Nome.setMaxWidth(150);
+        Nome.setPreferredWidth(150);
+        
+        TableColumn CPF= tblIndividuo.getColumnModel().getColumn(2);
+        CPF.setMinWidth(100);
+        CPF.setMaxWidth(100);
+        CPF.setPreferredWidth(100);
+                
+        TableColumn Idade = tblIndividuo.getColumnModel().getColumn(3);
+        Idade.setMinWidth(40);
+        Idade.setMaxWidth(40);
+        Idade.setPreferredWidth(40);
+        
+        TableColumn Telefone = tblIndividuo.getColumnModel().getColumn(4);
+        Telefone.setMinWidth(100);
+        Telefone.setMaxWidth(100);
+        Telefone.setPreferredWidth(100);
 
-        TableColumn Familia = tblIndividuo.getColumnModel().getColumn(1);
-        Familia.setPreferredWidth(20);
+        TableColumn Familia = tblIndividuo.getColumnModel().getColumn(5);
+        Familia.setMinWidth(80);
+        Familia.setMaxWidth(80);
+        Familia.setPreferredWidth(80);
 
-        TableColumn NrIndividuo = tblIndividuo.getColumnModel().getColumn(2);
+        /*TableColumn NrIndividuo = tblIndividuo.getColumnModel().getColumn(2);
         NrIndividuo.setMinWidth(80);
         NrIndividuo.setMaxWidth(80);
-        NrIndividuo.setPreferredWidth(80);
+        NrIndividuo.setPreferredWidth(80);*/
 
-        TableColumn Endereco = tblIndividuo.getColumnModel().getColumn(3);
-        Endereco.setPreferredWidth(100);
+        
+
     }
 
     private void carregarDados() {

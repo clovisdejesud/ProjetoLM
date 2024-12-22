@@ -124,9 +124,9 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
         Familia.setPreferredWidth(20);
 
         TableColumn NrIndividuo = tblFamilia.getColumnModel().getColumn(2);
-        NrIndividuo.setMinWidth(80);
-        NrIndividuo.setMaxWidth(80);
-        NrIndividuo.setPreferredWidth(80);
+        NrIndividuo.setMinWidth(100);
+        NrIndividuo.setMaxWidth(100);
+        NrIndividuo.setPreferredWidth(100);
 
         TableColumn Endereco = tblFamilia.getColumnModel().getColumn(3);
         Endereco.setPreferredWidth(100);
