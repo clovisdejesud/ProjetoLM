@@ -3,6 +3,7 @@ package br.com.cfj.piuc10_maven.persistencia;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class CadIndividuoDAO {
 
@@ -35,6 +36,7 @@ public class CadIndividuoDAO {
         }
         return individuo;
     }
+//Melhorias verificar em outro commit se esse método esta sendo utilizado
 
     public CadIndividuo obter(int id) {
         EntityManager em = JPAUtil.getEntityManager();
@@ -78,4 +80,20 @@ public class CadIndividuoDAO {
         }
     }
 
+    public void update(CadIndividuo cad) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(cad);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
 }

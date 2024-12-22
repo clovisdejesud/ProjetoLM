@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class TelaListagemIndividuo extends javax.swing.JFrame {
-
+    
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtIdade;
@@ -30,6 +30,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
 
     public TelaListagemIndividuo() {
         initComponents();
+        carregarDados();
 
         jPanel3 = new JPanel();
         jPanel3.setSize(800, 50);
@@ -45,9 +46,24 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             carregarDados();
 
             tblIndividuo.getModel().addTableModelListener(event -> {
-                if (event.getType() == TableModelEvent.UPDATE && updating) {
+                if (event.getType() == TableModelEvent.UPDATE) {
                     int row = event.getFirstRow();
-                    linhasEditadas.add(row); //Marcar a linha com editada
+                    DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
+                    
+                    CadIndividuo i = new CadIndividuo();
+                    i.setId((Integer) model.getValueAt(row, 0));
+                    i.setNome((String) model.getValueAt(row, 1));
+                    i.setCpf((String) model.getValueAt(row, 2));
+                    i.setIdade((String) model.getValueAt(row, 3));
+                    i.setTelefone((String) model.getValueAt(row, 4));
+                    i.setNomeFamilia((String) model.getValueAt(row, 5));
+                    i.setEscolaridade((String) model.getValueAt(row, 6));
+                    i.setTrabalha((String) model.getValueAt(row, 7));
+                    i.setObs((String) model.getValueAt(row, 8));
+                    
+                    linhasEditadas.add(row);
+                    
+                    System.out.println("Linhas editadas: " + row + " , Dados: " + i);
                 }
             });
 
@@ -146,6 +162,41 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         } finally {
             updating = false;
         }
+    }
+    
+    private void alterarDados(){
+        if (linhasEditadas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nenhum linha editada!");
+            return;
+        }
+        
+        try {
+            CadIndividuoDAO dao = new CadIndividuoDAO();
+            DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
+            
+            for (Integer row : linhasEditadas) {
+            CadIndividuo i = new CadIndividuo();
+            i.setId((Integer) model.getValueAt(row, 0));
+            i.setNome((String) model.getValueAt(row, 1));
+            i.setCpf((String) model.getValueAt(row, 2));
+            i.setIdade((String) model.getValueAt(row, 3));
+            i.setTelefone((String) model.getValueAt(row, 4));
+            i.setNomeFamilia((String) model.getValueAt(row, 5));
+            i.setEscolaridade((String) model.getValueAt(row, 6));
+            i.setTrabalha((String) model.getValueAt(row, 7));
+            i.setObs((String) model.getValueAt(row, 8));
+            
+            dao.update(i);
+            }
+            
+            JOptionPane.showMessageDialog(this, "Alteração salvas com sucesso");
+            
+            linhasEditadas.clear();
+            carregarDados();
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro: ", JOptionPane.ERROR_MESSAGE);
+        }    
     }
 
     @SuppressWarnings("unchecked")
@@ -262,7 +313,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
 
         btnPesquisar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
         btnPesquisar.setForeground(new java.awt.Color(0, 0, 0));
-        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setText("Alterar");
         btnPesquisar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,24 +337,21 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
+                .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addGap(127, 127, 127)
+                .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addGap(117, 117, 117)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addGap(177, 177, 177))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 20, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         filtroIndividuo.addActionListener(new java.awt.event.ActionListener() {
@@ -362,16 +410,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     }//GEN-LAST:event_filtroIndividuoActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        try {
-            String filtro = filtroIndividuo.getText();
-            CadIndividuoDAO dao = new CadIndividuoDAO();
-            List<CadIndividuo> listaIndividuo = dao.pesquisar(filtro);
-            pesquisar(listaIndividuo);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-
-        pesquisarClicado = true;
+        alterarDados();
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -386,7 +425,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        try {
+       try {
             if (tblIndividuo.getSelectedRow() >= 0) {
 
                 Object idObj = tblIndividuo.getValueAt(tblIndividuo.getSelectedRow(), 0);
