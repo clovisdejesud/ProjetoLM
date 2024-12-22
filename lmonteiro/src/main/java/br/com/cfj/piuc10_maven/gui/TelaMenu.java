@@ -1,4 +1,3 @@
-
 package br.com.cfj.piuc10_maven.gui;
 
 import br.com.cfj.piuc10_maven.gui.TelaListagemFamilia;
@@ -7,17 +6,15 @@ import java.awt.Color;
 
 public class TelaMenu extends javax.swing.JFrame {
 
-   
     public TelaMenu() {
         initComponents();
-        
+
         btnCadFamilia.setBackground(Color.ORANGE);
         btnCadIndividuo.setBackground(Color.ORANGE);
         btnListaFamilia.setBackground(Color.ORANGE);
         btnListaIndividuo.setBackground(Color.ORANGE);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -187,9 +184,9 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListaFamiliaActionPerformed
 
     private void btnCadIndividuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadIndividuoActionPerformed
-       TelaCadIndividuo individuo = new TelaCadIndividuo();
-       individuo.setVisible(true);
-       dispose();
+        TelaCadIndividuo individuo = new TelaCadIndividuo();
+        individuo.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnCadIndividuoActionPerformed
 
     private void btnCadFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadFamiliaActionPerformed

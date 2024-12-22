@@ -12,19 +12,17 @@ import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class TelaListagemFamilia extends javax.swing.JFrame {
-//Fazer um commit para retirar os comentários e as importação que não estão sendo utilizadas
+
     private Set<Integer> linhasEditadas;
 
     private javax.swing.JTextField txtNomeFamilia;
     private javax.swing.JTextField txtNrIndividuo;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtObs;
-    // private Set<Integer> linhasEditadas = new HashSet<>();
     private javax.swing.JScrollPane jScrollPanel;
     private boolean pesquisarClicado = false;
     private boolean updating = false;
@@ -62,21 +60,18 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
 
             tblFamilia.getModel().addTableModelListener(event -> {
                 if (event.getType() == TableModelEvent.UPDATE) {
-                    int row = event.getFirstRow(); // Linha editada
+                    int row = event.getFirstRow();
                     DefaultTableModel model = (DefaultTableModel) tblFamilia.getModel();
 
-                    // Criar um objeto CadFamilia com os novos dados da linha editada
                     CadFamilia familia = new CadFamilia();
-                    familia.setId((Integer) model.getValueAt(row, 0)); // ID
-                    familia.setNomeFamilia((String) model.getValueAt(row, 1)); // Nome da Família
-                    familia.setNrFamilia(Integer.parseInt(model.getValueAt(row, 2).toString())); // Nº de Indivíduos
-                    familia.setEndereco((String) model.getValueAt(row, 3)); // Endereço
-                    familia.setObs((String) model.getValueAt(row, 4)); // Observações
+                    familia.setId((Integer) model.getValueAt(row, 0));
+                    familia.setNomeFamilia((String) model.getValueAt(row, 1));
+                    familia.setNrFamilia(Integer.parseInt(model.getValueAt(row, 2).toString()));
+                    familia.setEndereco((String) model.getValueAt(row, 3));
+                    familia.setObs((String) model.getValueAt(row, 4));
 
-                    // Adicionar a linha na lista de editadas
                     linhasEditadas.add(row);
 
-                    // Log opcional para depuração
                     System.out.println("Linha editada: " + row + ", Dados: " + familia);
                 }
             });
@@ -113,7 +108,7 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao CONECTAR" + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
-            return false; // Falha na conexão
+            return false;
         } finally {
             JPAUtil.closeEtityManager();
         }
@@ -216,7 +211,7 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
             carregarDados();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -513,16 +508,6 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        /* try {
-            String filtro = filtroFamilia.getText();
-            CadFamiliaDAO dao = new CadFamiliaDAO();
-            List<CadFamilia> listaFamilia = dao.pesquisar(filtro);
-            pesquisar(listaFamilia);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-
-        pesquisarClicado = true;*/
 
         alterarDados();
 

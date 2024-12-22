@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class TelaListagemIndividuo extends javax.swing.JFrame {
-    
+
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtIdade;
@@ -49,7 +49,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
                 if (event.getType() == TableModelEvent.UPDATE) {
                     int row = event.getFirstRow();
                     DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
-                    
+
                     CadIndividuo i = new CadIndividuo();
                     i.setId((Integer) model.getValueAt(row, 0));
                     i.setNome((String) model.getValueAt(row, 1));
@@ -60,9 +60,9 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
                     i.setEscolaridade((String) model.getValueAt(row, 6));
                     i.setTrabalha((String) model.getValueAt(row, 7));
                     i.setObs((String) model.getValueAt(row, 8));
-                    
+
                     linhasEditadas.add(row);
-                    
+
                     System.out.println("Linhas editadas: " + row + " , Dados: " + i);
                 }
             });
@@ -95,7 +95,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         ID.setMinWidth(40);
         ID.setMaxWidth(40);
         ID.setPreferredWidth(40);
-        
+
         TableColumn Nome = tblIndividuo.getColumnModel().getColumn(1);
         Nome.setMinWidth(200);
         Nome.setMaxWidth(200);
@@ -163,36 +163,36 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             updating = false;
         }
     }
-    
-    private void alterarDados(){
-      
+
+    private void alterarDados() {
+
         try {
             CadIndividuoDAO dao = new CadIndividuoDAO();
             DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
-            
+
             for (Integer row : linhasEditadas) {
-            CadIndividuo i = new CadIndividuo();
-            i.setId((Integer) model.getValueAt(row, 0));
-            i.setNome((String) model.getValueAt(row, 1));
-            i.setCpf((String) model.getValueAt(row, 2));
-            i.setIdade((String) model.getValueAt(row, 3));
-            i.setTelefone((String) model.getValueAt(row, 4));
-            i.setNomeFamilia((String) model.getValueAt(row, 5));
-            i.setEscolaridade((String) model.getValueAt(row, 6));
-            i.setTrabalha((String) model.getValueAt(row, 7));
-            i.setObs((String) model.getValueAt(row, 8));
-            
-            dao.update(i);
+                CadIndividuo i = new CadIndividuo();
+                i.setId((Integer) model.getValueAt(row, 0));
+                i.setNome((String) model.getValueAt(row, 1));
+                i.setCpf((String) model.getValueAt(row, 2));
+                i.setIdade((String) model.getValueAt(row, 3));
+                i.setTelefone((String) model.getValueAt(row, 4));
+                i.setNomeFamilia((String) model.getValueAt(row, 5));
+                i.setEscolaridade((String) model.getValueAt(row, 6));
+                i.setTrabalha((String) model.getValueAt(row, 7));
+                i.setObs((String) model.getValueAt(row, 8));
+
+                dao.update(i);
             }
-            
+
             JOptionPane.showMessageDialog(this, "Alteração salvas com sucesso");
-            
+
             linhasEditadas.clear();
             carregarDados();
-        
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro: ", JOptionPane.ERROR_MESSAGE);
-        }    
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -421,7 +421,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-       try {
+        try {
             if (tblIndividuo.getSelectedRow() >= 0) {
 
                 Object idObj = tblIndividuo.getValueAt(tblIndividuo.getSelectedRow(), 0);
