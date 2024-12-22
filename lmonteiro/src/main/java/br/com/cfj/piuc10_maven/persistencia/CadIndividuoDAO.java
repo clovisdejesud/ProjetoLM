@@ -36,17 +36,6 @@ public class CadIndividuoDAO {
         }
         return individuo;
     }
-/*/Melhorias verificar em outro commit se esse método esta sendo utilizado
-
-    public CadIndividuo obter(int id) {
-        EntityManager em = JPAUtil.getEntityManager();
-        try {
-            return em.find(CadIndividuo.class, id);
-        } finally {
-            JPAUtil.closeEtityManager();
-        }
-
-    }*/
 
     public List<CadIndividuo> pesquisar(String filtroIndividuo) {
         EntityManager em = JPAUtil.getEntityManager();
