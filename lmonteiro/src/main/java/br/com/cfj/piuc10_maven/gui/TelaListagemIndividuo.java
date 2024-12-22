@@ -165,11 +165,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     }
     
     private void alterarDados(){
-        if (linhasEditadas.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nenhum linha editada!");
-            return;
-        }
-        
+      
         try {
             CadIndividuoDAO dao = new CadIndividuoDAO();
             DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
