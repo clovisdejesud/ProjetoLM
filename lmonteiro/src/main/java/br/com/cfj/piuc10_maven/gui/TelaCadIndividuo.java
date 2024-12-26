@@ -3,6 +3,8 @@ package br.com.cfj.piuc10_maven.gui;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuo;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuoDAO;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class TelaCadIndividuo extends javax.swing.JFrame {
@@ -14,6 +16,29 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         btnVoltar.setBackground(Color.ORANGE);
         lblCabecalho.setForeground(Color.WHITE);
         lblCabecalhoDep.setForeground(Color.WHITE);
+    }
+
+    public java.sql.Date formatarData(String dataRecebida) {
+        SimpleDateFormat conversor = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date dataConvertida = conversor.parse(dataRecebida);
+            java.sql.Date sqlDate = new java.sql.Date(dataConvertida.getTime());
+
+            return sqlDate;
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro: " + ex.getMessage());
+            return null;
+        }
+    }
+
+    public String reverterData(String data) {
+        String dia = data.substring(8);
+        String mes = data.substring(5, 7);
+        String ano = data.substring(0, 4);
+        String dataNasc = dia + "/" + mes + "/" + ano;
+        return dataNasc;
     }
 
     @SuppressWarnings("unchecked")
@@ -335,7 +360,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
             cadInd.setNome(txtNome.getText());
             cadInd.setCpf(txtCPF.getText());
 
-            cadInd.setIdade(txtIdade.getText());
+            cadInd.setDataNasc(formatarData(txtIdade.getText()));
 
             cadInd.setTelefone(txtTelefone.getText());
             cadInd.setNomeFamilia(txtNomeFamilia.getText());

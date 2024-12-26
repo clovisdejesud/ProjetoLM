@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.sql.Date;
 
 @Entity
 public class CadIndividuo {
@@ -14,7 +15,7 @@ public class CadIndividuo {
     private int id;
     private String nome;
     private String cpf;
-    private String idade;
+    private Date dataNasc;
     private String telefone;
     private String nomeFamilia;
     private String escolaridade;
@@ -45,12 +46,12 @@ public class CadIndividuo {
         this.cpf = cpf;
     }
 
-    public String getIdade() {
-        return idade;
+    public Date getDataNasc() {
+        return dataNasc;
     }
 
-    public void setIdade(String idade) {
-        this.idade = idade;
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
     public String getTelefone() {
@@ -92,4 +93,24 @@ public class CadIndividuo {
     public void setObs(String obs) {
         this.obs = obs;
     }
+
+    public static int calcularIdade(Date dataNasc) {
+        if (dataNasc == null) {
+            return 0;
+        }
+        
+        java.util.Calendar dataSis  = java.util.Calendar.getInstance();
+        java.util.Calendar dataNascimento = java.util.Calendar.getInstance();
+        dataNascimento.setTime(dataNasc);
+        
+        int idade = dataSis.get(java.util.Calendar.YEAR) - dataNascimento.get(java.util.Calendar.YEAR);
+        
+        if (dataSis.get(java.util.Calendar.MONTH) < dataNascimento.get(java.util.Calendar.MONTH)
+                || dataSis.get(java.util.Calendar.MONTH) == dataNascimento.get(java.util.Calendar.MONTH)
+                && dataSis.get(java.util.Calendar.DAY_OF_MONTH) < dataNascimento.get(java.util.Calendar.DAY_OF_MONTH)){
+            idade--;
+        }
+        return idade;
+    }
+
 }
