@@ -46,24 +46,10 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             carregarDados();
 
             tblIndividuo.getModel().addTableModelListener(event -> {
-                if (event.getType() == TableModelEvent.UPDATE) {
+                if (event.getType() == TableModelEvent.UPDATE && updating) {
                     int row = event.getFirstRow();
-                    DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
-
-                    CadIndividuo i = new CadIndividuo();
-                    i.setId((Integer) model.getValueAt(row, 0));
-                    i.setNome((String) model.getValueAt(row, 1));
-                    i.setCpf((String) model.getValueAt(row, 2));
-                    i.setIdade((String) model.getValueAt(row, 3));
-                    i.setTelefone((String) model.getValueAt(row, 4));
-                    i.setNomeFamilia((String) model.getValueAt(row, 5));
-                    i.setEscolaridade((String) model.getValueAt(row, 6));
-                    i.setTrabalha((String) model.getValueAt(row, 7));
-                    i.setObs((String) model.getValueAt(row, 8));
-
-                    linhasEditadas.add(row);
-
-                    System.out.println("Linhas editadas: " + row + " , Dados: " + i);
+                    
+                    linhasEditadas.add(row);            
                 }
             });
 
@@ -107,9 +93,9 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         CPF.setPreferredWidth(100);
                 
         TableColumn Idade = tblIndividuo.getColumnModel().getColumn(3);
-        Idade.setMinWidth(40);
-        Idade.setMaxWidth(40);
-        Idade.setPreferredWidth(40);
+        Idade.setMinWidth(50);
+        Idade.setMaxWidth(50);
+        Idade.setPreferredWidth(50);
         
         TableColumn Telefone = tblIndividuo.getColumnModel().getColumn(4);
         Telefone.setMinWidth(100);
@@ -120,13 +106,6 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         Familia.setMinWidth(80);
         Familia.setMaxWidth(80);
         Familia.setPreferredWidth(80);
-
-        /*TableColumn NrIndividuo = tblIndividuo.getColumnModel().getColumn(2);
-        NrIndividuo.setMinWidth(80);
-        NrIndividuo.setMaxWidth(80);
-        NrIndividuo.setPreferredWidth(80);*/
-
-        
 
     }
 
@@ -139,11 +118,12 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             model.setRowCount(0);
 
             for (CadIndividuo ind : listaIndividuo) {
+                int idade = CadIndividuo.calcularIdade(ind.getDataNasc());
                 model.addRow(new Object[]{
                     ind.getId(),
                     ind.getNome(),
                     ind.getCpf(),
-                    ind.getIdade(),
+                    idade,
                     ind.getTelefone(),
                     ind.getNomeFamilia(),
                     ind.getEscolaridade(),
@@ -163,11 +143,12 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             model.setRowCount(0);
 
             for (CadIndividuo ind : listaIndividuo) {
+                int idade = CadIndividuo.calcularIdade(ind.getDataNasc());
                 model.addRow(new Object[]{
                     ind.getId(),
                     ind.getNome(),
                     ind.getCpf(),
-                    ind.getIdade(),
+                    idade,
                     ind.getTelefone(),
                     ind.getNomeFamilia(),
                     ind.getEscolaridade(),
@@ -180,8 +161,8 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             updating = false;
         }
     }
-
-    private void alterarDados() {
+//Transferir o método alterar para a nova tela de consulta individual de cada individuo
+   /* private void alterarDados() {
 
         try {
             CadIndividuoDAO dao = new CadIndividuoDAO();
@@ -210,7 +191,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro: ", JOptionPane.ERROR_MESSAGE);
         }
-    }
+    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -423,7 +404,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     }//GEN-LAST:event_filtroIndividuoActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        alterarDados();
+        //alterarDados();
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
