@@ -55,7 +55,7 @@
                           <Component id="lblCabecalhoDep" min="-2" pref="216" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="65" max="32767" attributes="0"/>
+                  <EmptySpace pref="85" max="32767" attributes="0"/>
               </Group>
               <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -108,36 +108,32 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="169" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnConsultaIndividuo" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                          <Component id="btnListaFamilia1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnListaIndividuo" alignment="0" max="32767" attributes="0"/>
+                      <EmptySpace min="219" pref="219" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnCadFamilia" max="32767" attributes="0"/>
+                          <Component id="btnCadIndividuo" pref="132" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="225" pref="225" max="-2" attributes="0"/>
-                              <Component id="btnConsultaFamilia" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" pref="169" max="-2" attributes="0"/>
+                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnListaIndividuo" pref="132" max="32767" attributes="0"/>
+                                  <Component id="btnListaFamilia" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnConsultaIndividuo" alignment="1" pref="132" max="32767" attributes="0"/>
+                                  <Component id="btnConsultaFamilia" alignment="1" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="219" pref="219" max="-2" attributes="0"/>
-                              <Component id="btnCadIndividuo" max="32767" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="219" pref="219" max="-2" attributes="0"/>
-                              <Component id="btnCadFamilia" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -150,22 +146,23 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="btnConsultaFamilia" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="btnCadFamilia" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnCadIndividuo" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnConsultaFamilia" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="btnConsultaIndividuo" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnListaFamilia1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnListaFamilia" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnListaIndividuo" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace pref="29" max="32767" attributes="0"/>
@@ -199,7 +196,7 @@
                 <Property name="text" type="java.lang.String" value="Cadastro de Fam&#xed;lia"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                    <EmptyBorder bottom="1" left="7" right="1" top="1"/>
                   </Border>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -219,7 +216,7 @@
                 <Property name="text" type="java.lang.String" value="Cadastro de Indiv&#xed;duo"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                    <EmptyBorder bottom="1" left="7" right="1" top="1"/>
                   </Border>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -239,7 +236,7 @@
                 <Property name="text" type="java.lang.String" value="Consulta Individuo"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                    <EmptyBorder bottom="1" left="7" right="1" top="1"/>
                   </Border>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -270,7 +267,7 @@
                 <Property name="text" type="java.lang.String" value="Listagem Indiv&#xed;duos"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                    <EmptyBorder bottom="1" left="7" right="1" top="1"/>
                   </Border>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -279,7 +276,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaIndividuoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnListaFamilia1">
+            <Component class="javax.swing.JButton" name="btnListaFamilia">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -290,13 +287,13 @@
                 <Property name="text" type="java.lang.String" value="Listagem Fam&#xed;lia"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                    <EmptyBorder bottom="1" left="7" right="1" top="1"/>
                   </Border>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaFamilia1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaFamiliaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnConsultaFamilia">
@@ -310,7 +307,7 @@
                 <Property name="text" type="java.lang.String" value="Consulta Fam&#xed;lia"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                    <EmptyBorder bottom="1" left="7" right="1" top="1"/>
                   </Border>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>

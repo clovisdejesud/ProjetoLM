@@ -13,6 +13,12 @@ public class Helper {
         preencherTabelaIndividuo(model, listaIndividuo);
     }
 
+    public void carregarDadosFamilia(DefaultTableModel model) {
+        CadFamiliaDAO dao = new CadFamiliaDAO();
+        List<CadFamilia> listaFamilia = dao.listarTodas();
+        preencherTabelaFamilia(model, listaFamilia);
+    }
+
     public static void preencherTabelaIndividuo(DefaultTableModel model, List<CadIndividuo> listaIndividuo) {
         model.setRowCount(0);
 
@@ -30,6 +36,21 @@ public class Helper {
                 ind.getTrabalha(),
                 ind.getObs()
             });
+        }
+    }
+
+    public static void preencherTabelaFamilia(DefaultTableModel model, List<CadFamilia> listaFamilia) {
+        model.setRowCount(0);
+
+        for (CadFamilia f : listaFamilia) {
+            model.addRow(new Object[]{
+                f.getId(),
+                f.getNomeFamilia(),
+                f.getNrFamilia(),
+                f.getEndereco(),
+                f.getObs()
+            });
+
         }
     }
 }

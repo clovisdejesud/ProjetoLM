@@ -7,6 +7,15 @@ import javax.swing.JOptionPane;
 
 public class CadIndividuoDAO {
 
+    public CadIndividuo buscarPorId(int id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            return em.find(CadIndividuo.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
     public void cadastrar(CadIndividuo cad) {
         EntityManager em = JPAUtil.getEntityManager();
         try {

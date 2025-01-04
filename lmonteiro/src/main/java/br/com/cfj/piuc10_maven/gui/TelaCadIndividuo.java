@@ -61,7 +61,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         txtNomeFamilia = new javax.swing.JTextField();
         txtCPF = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtIdade = new javax.swing.JFormattedTextField();
+        txtDataNasc = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -160,12 +160,12 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(49, 49, 106));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Idade");
+        jLabel8.setText("Data Nasc.");
         jLabel8.setOpaque(true);
 
-        txtIdade.setBackground(new java.awt.Color(242, 242, 242));
-        txtIdade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
-        txtIdade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txtDataNasc.setBackground(new java.awt.Color(242, 242, 242));
+        txtDataNasc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
+        txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         jLabel9.setBackground(new java.awt.Color(49, 49, 106));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
@@ -246,7 +246,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(27, 27, 27)
-                                                .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(27, 27, 27)
@@ -287,7 +287,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -360,7 +360,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
             cadInd.setNome(txtNome.getText());
             cadInd.setCpf(txtCPF.getText());
 
-            cadInd.setDataNasc(formatarData(txtIdade.getText()));
+            cadInd.setDataNasc(formatarData(txtDataNasc.getText()));
 
             cadInd.setTelefone(txtTelefone.getText());
             cadInd.setNomeFamilia(txtNomeFamilia.getText());
@@ -379,7 +379,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
 
             txtNome.setText("");
             txtCPF.setText("");
-            txtIdade.setText("");
+            txtDataNasc.setText("");
             txtTelefone.setText("");
             txtNomeFamilia.setText("");
             txtEscolaridade.setText("");
@@ -464,8 +464,8 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
     private javax.swing.JLabel lblCabecalho;
     private javax.swing.JLabel lblCabecalhoDep;
     private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JFormattedTextField txtDataNasc;
     private javax.swing.JTextField txtEscolaridade;
-    private javax.swing.JFormattedTextField txtIdade;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeFamilia;
     private javax.swing.JTextArea txtObs;

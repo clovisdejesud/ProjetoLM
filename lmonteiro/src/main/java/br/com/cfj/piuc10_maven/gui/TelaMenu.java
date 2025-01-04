@@ -10,8 +10,10 @@ public class TelaMenu extends javax.swing.JFrame {
         initComponents();
 
         btnCadFamilia.setBackground(Color.ORANGE);
+        btnConsultaFamilia.setBackground(Color.ORANGE);
         btnCadIndividuo.setBackground(Color.ORANGE);
         btnConsultaIndividuo.setBackground(Color.ORANGE);
+        btnListaFamilia.setBackground(Color.ORANGE);
         btnListaIndividuo.setBackground(Color.ORANGE);
     }
 
@@ -29,7 +31,7 @@ public class TelaMenu extends javax.swing.JFrame {
         btnConsultaIndividuo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnListaIndividuo = new javax.swing.JButton();
-        btnListaFamilia1 = new javax.swing.JButton();
+        btnListaFamilia = new javax.swing.JButton();
         btnConsultaFamilia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,7 +56,7 @@ public class TelaMenu extends javax.swing.JFrame {
         btnCadFamilia.setBackground(new java.awt.Color(204, 204, 204));
         btnCadFamilia.setForeground(new java.awt.Color(0, 0, 0));
         btnCadFamilia.setText("Cadastro de Família");
-        btnCadFamilia.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnCadFamilia.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
         btnCadFamilia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCadFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +67,7 @@ public class TelaMenu extends javax.swing.JFrame {
         btnCadIndividuo.setBackground(new java.awt.Color(204, 204, 204));
         btnCadIndividuo.setForeground(new java.awt.Color(0, 0, 0));
         btnCadIndividuo.setText("Cadastro de Indivíduo");
-        btnCadIndividuo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnCadIndividuo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
         btnCadIndividuo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCadIndividuo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +78,7 @@ public class TelaMenu extends javax.swing.JFrame {
         btnConsultaIndividuo.setBackground(new java.awt.Color(204, 204, 204));
         btnConsultaIndividuo.setForeground(new java.awt.Color(0, 0, 0));
         btnConsultaIndividuo.setText("Consulta Individuo");
-        btnConsultaIndividuo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnConsultaIndividuo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
         btnConsultaIndividuo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnConsultaIndividuo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +93,7 @@ public class TelaMenu extends javax.swing.JFrame {
         btnListaIndividuo.setBackground(new java.awt.Color(204, 204, 204));
         btnListaIndividuo.setForeground(new java.awt.Color(0, 0, 0));
         btnListaIndividuo.setText("Listagem Indivíduos");
-        btnListaIndividuo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnListaIndividuo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
         btnListaIndividuo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnListaIndividuo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,21 +101,21 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
 
-        btnListaFamilia1.setBackground(new java.awt.Color(204, 204, 204));
-        btnListaFamilia1.setForeground(new java.awt.Color(0, 0, 0));
-        btnListaFamilia1.setText("Listagem Família");
-        btnListaFamilia1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnListaFamilia1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnListaFamilia1.addActionListener(new java.awt.event.ActionListener() {
+        btnListaFamilia.setBackground(new java.awt.Color(204, 204, 204));
+        btnListaFamilia.setForeground(new java.awt.Color(0, 0, 0));
+        btnListaFamilia.setText("Listagem Família");
+        btnListaFamilia.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
+        btnListaFamilia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnListaFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListaFamilia1ActionPerformed(evt);
+                btnListaFamiliaActionPerformed(evt);
             }
         });
 
         btnConsultaFamilia.setBackground(new java.awt.Color(204, 204, 204));
         btnConsultaFamilia.setForeground(new java.awt.Color(0, 0, 0));
         btnConsultaFamilia.setText("Consulta Família");
-        btnConsultaFamilia.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnConsultaFamilia.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
         btnConsultaFamilia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnConsultaFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,29 +128,26 @@ public class TelaMenu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConsultaIndividuo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListaFamilia1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListaIndividuo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(219, 219, 219)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCadFamilia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadIndividuo, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(btnConsultaFamilia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnListaIndividuo, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(btnListaFamilia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnConsultaIndividuo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(btnConsultaFamilia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(btnCadIndividuo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(btnCadFamilia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(58, 58, 58))
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,19 +157,19 @@ public class TelaMenu extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(124, 124, 124)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsultaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(btnCadFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCadIndividuo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConsultaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCadIndividuo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
                 .addComponent(btnConsultaIndividuo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnListaFamilia1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnListaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnListaIndividuo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -188,7 +187,7 @@ public class TelaMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(lblCabecalhoDep, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -218,8 +217,8 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultaIndividuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaIndividuoActionPerformed
-        TelaListagemFamilia familia = new TelaListagemFamilia();
-        familia.setVisible(true);
+        TelaConsultaIndividuo ind = new TelaConsultaIndividuo();
+        ind.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnConsultaIndividuoActionPerformed
 
@@ -241,9 +240,11 @@ public class TelaMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnListaIndividuoActionPerformed
 
-    private void btnListaFamilia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaFamilia1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnListaFamilia1ActionPerformed
+    private void btnListaFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaFamiliaActionPerformed
+       TelaListagemFamilia f = new TelaListagemFamilia();
+       f.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_btnListaFamiliaActionPerformed
 
     private void btnConsultaFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaFamiliaActionPerformed
         // TODO add your handling code here:
@@ -289,7 +290,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCadIndividuo;
     private javax.swing.JButton btnConsultaFamilia;
     private javax.swing.JButton btnConsultaIndividuo;
-    private javax.swing.JButton btnListaFamilia1;
+    private javax.swing.JButton btnListaFamilia;
     private javax.swing.JButton btnListaIndividuo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
