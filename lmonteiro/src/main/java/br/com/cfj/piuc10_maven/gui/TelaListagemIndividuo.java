@@ -2,16 +2,23 @@ package br.com.cfj.piuc10_maven.gui;
 
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuo;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuoDAO;
+import br.com.cfj.piuc10_maven.persistencia.Helper;
 import java.awt.Color;
 import java.awt.GridLayout;
+//import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class TelaListagemIndividuo extends javax.swing.JFrame {
 
@@ -23,6 +30,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     private javax.swing.JTextField txtEscolaridade;
     private javax.swing.JTextField txtTrabalha;
     private javax.swing.JTextField txtObs;
+    private Helper individuoHelper;
     private Set<Integer> linhasEditadas = new HashSet<>();
     private javax.swing.JScrollPane jScrollPanel;
     private boolean pesquisarClicado = false;
@@ -30,7 +38,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
 
     public TelaListagemIndividuo() {
         initComponents();
-        carregarDados();
+        individuoHelper = new Helper();
 
         jPanel3 = new JPanel();
         jPanel3.setSize(800, 50);
@@ -43,32 +51,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
 
         try {
             configurarTabela();
-            carregarDados();
-
-            tblIndividuo.getModel().addTableModelListener(event -> {
-                if (event.getType() == TableModelEvent.UPDATE && updating) {
-                    int row = event.getFirstRow();
-                    
-                    linhasEditadas.add(row);            
-                }
-            });
-
-            tblIndividuo.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    int selectedRow = tblIndividuo.getSelectedRow();
-                    if (selectedRow != -1) {
-                        DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
-                        txtNome.setText((String) model.getValueAt(selectedRow, 1));
-                        txtCPF.setText((String) model.getValueAt(selectedRow, 2));
-                        txtIdade.setText((String) model.getValueAt(selectedRow, 3));
-                        txtTelefone.setText((String) model.getValueAt(selectedRow, 4));
-                        txtNomeFamilia.setText((String) model.getValueAt(selectedRow, 5));
-                        txtEscolaridade.setText((String) model.getValueAt(selectedRow, 6));
-                        txtTrabalha.setText((String) model.getValueAt(selectedRow, 7));
-                        txtObs.setText((String) model.getValueAt(selectedRow, 8));
-                    }
-                }
-            });
+            individuoHelper.carregarDadosIndividuo((DefaultTableModel) tblIndividuo.getModel());
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar os dados" + e.getMessage());
@@ -86,17 +69,17 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         Nome.setMinWidth(150);
         Nome.setMaxWidth(150);
         Nome.setPreferredWidth(150);
-        
-        TableColumn CPF= tblIndividuo.getColumnModel().getColumn(2);
+
+        TableColumn CPF = tblIndividuo.getColumnModel().getColumn(2);
         CPF.setMinWidth(100);
         CPF.setMaxWidth(100);
         CPF.setPreferredWidth(100);
-                
+
         TableColumn Idade = tblIndividuo.getColumnModel().getColumn(3);
         Idade.setMinWidth(50);
         Idade.setMaxWidth(50);
         Idade.setPreferredWidth(50);
-        
+
         TableColumn Telefone = tblIndividuo.getColumnModel().getColumn(4);
         Telefone.setMinWidth(100);
         Telefone.setMaxWidth(100);
@@ -107,33 +90,6 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         Familia.setMaxWidth(80);
         Familia.setPreferredWidth(80);
 
-    }
-
-    private void carregarDados() {
-        updating = true;
-        try {
-            CadIndividuoDAO dao = new CadIndividuoDAO();
-            List<CadIndividuo> listaIndividuo = dao.listarTodas();
-            DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
-            model.setRowCount(0);
-
-            for (CadIndividuo ind : listaIndividuo) {
-                int idade = CadIndividuo.calcularIdade(ind.getDataNasc());
-                model.addRow(new Object[]{
-                    ind.getId(),
-                    ind.getNome(),
-                    ind.getCpf(),
-                    idade,
-                    ind.getTelefone(),
-                    ind.getNomeFamilia(),
-                    ind.getEscolaridade(),
-                    ind.getTrabalha(),
-                    ind.getObs()
-                });
-            }
-        } finally {
-            updating = false;
-        }
     }
 
     private void pesquisar(List<CadIndividuo> listaIndividuo) {
@@ -162,7 +118,8 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         }
     }
 //Transferir o método alterar para a nova tela de consulta individual de cada individuo
-   /* private void alterarDados() {
+
+    private void alterarDados() {
 
         try {
             CadIndividuoDAO dao = new CadIndividuoDAO();
@@ -173,7 +130,23 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
                 i.setId((Integer) model.getValueAt(row, 0));
                 i.setNome((String) model.getValueAt(row, 1));
                 i.setCpf((String) model.getValueAt(row, 2));
-                i.setIdade((String) model.getValueAt(row, 3));
+
+                Object dataObj = model.getValueAt(row, 3);
+
+                if (dataObj instanceof java.sql.Date) {
+                    i.setDataNasc((java.sql.Date) dataObj);
+                } else if (dataObj instanceof Date) {
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Date utilDate = sdf.parse((String) dataObj);
+                        i.setDataNasc(new java.sql.Date(utilDate.getTime()));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        // Trate o erro ou configure um valor padrão para a data
+                        i.setDataNasc(null);
+                    }
+                } else {i.setDataNasc(null);}
+
                 i.setTelefone((String) model.getValueAt(row, 4));
                 i.setNomeFamilia((String) model.getValueAt(row, 5));
                 i.setEscolaridade((String) model.getValueAt(row, 6));
@@ -186,12 +159,12 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Alteração salvas com sucesso");
 
             linhasEditadas.clear();
-            carregarDados();
+            individuoHelper.carregarDadosIndividuo((DefaultTableModel) tblIndividuo.getModel());
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro: ", JOptionPane.ERROR_MESSAGE);
         }
-    }*/
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -403,19 +376,12 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_filtroIndividuoActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        //alterarDados();
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        if (pesquisarClicado) {
-            carregarDados();
-            pesquisarClicado = false;
-        } else {
-            TelaMenu menu = new TelaMenu();
-            menu.setVisible(true);
-            dispose();
-        }
+
+        TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+        dispose();
+
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -440,6 +406,10 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ocorreu uma falha:\n" + e.getMessage());
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        alterarDados();
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments

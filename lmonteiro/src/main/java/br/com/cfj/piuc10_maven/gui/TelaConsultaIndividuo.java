@@ -4,41 +4,15 @@ import br.com.cfj.piuc10_maven.persistencia.CadIndividuo;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuoDAO;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
-public class TelaCadIndividuo extends javax.swing.JFrame {
+public class TelaConsultaIndividuo extends javax.swing.JFrame {
 
-    public TelaCadIndividuo() {
+    public TelaConsultaIndividuo() {
         initComponents();
-
-        btnCadastrar.setBackground(Color.ORANGE);
+        
+        btnConsultar.setBackground(Color.ORANGE);
         btnVoltar.setBackground(Color.ORANGE);
-        lblCabecalho.setForeground(Color.WHITE);
-        lblCabecalhoDep.setForeground(Color.WHITE);
-    }
-
-    public java.sql.Date formatarData(String dataRecebida) {
-        SimpleDateFormat conversor = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-            Date dataConvertida = conversor.parse(dataRecebida);
-            java.sql.Date sqlDate = new java.sql.Date(dataConvertida.getTime());
-
-            return sqlDate;
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Erro: " + ex.getMessage());
-            return null;
-        }
-    }
-
-    public String reverterData(String data) {
-        String dia = data.substring(8);
-        String mes = data.substring(5, 7);
-        String ano = data.substring(0, 4);
-        String dataNasc = dia + "/" + mes + "/" + ano;
-        return dataNasc;
     }
 
     @SuppressWarnings("unchecked")
@@ -55,10 +29,9 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObs = new javax.swing.JTextArea();
-        btnCadastrar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         txtNome = new javax.swing.JTextField();
-        txtNomeFamilia = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
         txtCPF = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDataNasc = new javax.swing.JFormattedTextField();
@@ -69,9 +42,11 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtEscolaridade = new javax.swing.JTextField();
         txtTrabalha = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtNomeFamilia = new javax.swing.JTextField();
+        btnConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(49, 49, 106));
 
@@ -114,17 +89,6 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         txtObs.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
         jScrollPane1.setViewportView(txtObs);
 
-        btnCadastrar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCadastrar.setText("Salvar");
-        btnCadastrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnCadastrar.setOpaque(true);
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
-
         btnVoltar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
         btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("<<Voltar");
@@ -140,12 +104,13 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         txtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
 
-        txtNomeFamilia.setBackground(new java.awt.Color(242, 242, 242));
-        txtNomeFamilia.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        txtNomeFamilia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
-        txtNomeFamilia.addActionListener(new java.awt.event.ActionListener() {
+        txtID.setBackground(new java.awt.Color(242, 242, 242));
+        txtID.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtID.setToolTipText("Digite ID que seja pesquisar");
+        txtID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
+        txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeFamiliaActionPerformed(evt);
+                txtIDActionPerformed(evt);
             }
         });
 
@@ -160,12 +125,12 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(49, 49, 106));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Data Nasc.");
+        jLabel8.setText("Data Nascto");
         jLabel8.setOpaque(true);
 
         txtDataNasc.setBackground(new java.awt.Color(242, 242, 242));
         txtDataNasc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
-        txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         jLabel9.setBackground(new java.awt.Color(49, 49, 106));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
@@ -217,15 +182,41 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setBackground(new java.awt.Color(49, 49, 106));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("ID");
+        jLabel10.setAlignmentY(0.0F);
+        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel10.setOpaque(true);
+
+        txtNomeFamilia.setBackground(new java.awt.Color(242, 242, 242));
+        txtNomeFamilia.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtNomeFamilia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
+        txtNomeFamilia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeFamiliaActionPerformed(evt);
+            }
+        });
+
+        btnConsultar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnConsultar.setForeground(new java.awt.Color(0, 0, 0));
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnConsultar.setOpaque(true);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -261,14 +252,23 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(107, 107, 107)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 13, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)))
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,18 +296,22 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEscolaridade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTrabalha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTrabalha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -350,65 +354,60 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        try {
-            CadIndividuo cadInd = new CadIndividuo();
-
-            cadInd.setNome(txtNome.getText());
-            cadInd.setCpf(txtCPF.getText());
-
-            cadInd.setDataNasc(formatarData(txtDataNasc.getText()));
-
-            cadInd.setTelefone(txtTelefone.getText());
-            cadInd.setNomeFamilia(txtNomeFamilia.getText());
-            cadInd.setEscolaridade(txtEscolaridade.getText());
-            cadInd.setTrabalha(txtTrabalha.getText());
-            cadInd.setObs(txtObs.getText());
-
-            if (!txtNome.getText().isEmpty() && !txtNomeFamilia.getText().isEmpty()) {
-                CadIndividuoDAO daoInd = new CadIndividuoDAO();
-                daoInd.cadastrar(cadInd);
-                JOptionPane.showMessageDialog(this, "Indivíduo cadastrado!");
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Erro! Campos vazios");
-            }
-
-            txtNome.setText("");
-            txtCPF.setText("");
-            txtDataNasc.setText("");
-            txtTelefone.setText("");
-            txtNomeFamilia.setText("");
-            txtEscolaridade.setText("");
-            txtTrabalha.setText("");
-            txtObs.setText("");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Erro de cadastro");
-        }
-    }//GEN-LAST:event_btnCadastrarActionPerformed
-
-    private void txtNomeFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFamiliaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeFamiliaActionPerformed
-
-    private void txtTrabalhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrabalhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTrabalhaActionPerformed
-
-    private void txtEscolaridadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscolaridadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEscolaridadeActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtEscolaridadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscolaridadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEscolaridadeActionPerformed
+
+    private void txtTrabalhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrabalhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTrabalhaActionPerformed
+
+    private void txtNomeFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFamiliaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeFamiliaActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        try {
+            int id = Integer.parseInt(txtID.getText());
+
+            CadIndividuoDAO dao = new CadIndividuoDAO();
+
+            CadIndividuo ind = dao.buscarPorId(id);
+
+            if (ind != null) {
+                txtNome.setText(ind.getNome());
+                txtCPF.setText(ind.getCpf());
+                
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String dataFormatada = sdf.format(ind.getDataNasc());
+                txtDataNasc.setText(dataFormatada);
+                
+                txtTelefone.setText(ind.getTelefone());
+                txtEscolaridade.setText(ind.getEscolaridade());
+                txtTrabalha.setText(ind.getTrabalha());
+                txtNomeFamilia.setText(ind.getNomeFamilia());
+                txtObs.setText(ind.getObs());
+            } else {
+                JOptionPane.showMessageDialog(this, "Individuo não encontrado", "Erro: ", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Digite ID válido", "Erro: ", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao consultar indivíduo: " + e.getMessage(), "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,28 +426,28 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaIndividuo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadIndividuo().setVisible(true);
+                new TelaConsultaIndividuo().setVisible(true);
             }
         });
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -466,6 +465,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JFormattedTextField txtDataNasc;
     private javax.swing.JTextField txtEscolaridade;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeFamilia;
     private javax.swing.JTextArea txtObs;

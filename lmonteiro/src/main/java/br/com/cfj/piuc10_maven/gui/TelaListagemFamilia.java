@@ -3,6 +3,7 @@ package br.com.cfj.piuc10_maven.gui;
 import br.com.cfj.piuc10_maven.persistencia.CadFamilia;
 import br.com.cfj.piuc10_maven.persistencia.CadFamiliaDAO;
 import br.com.cfj.piuc10_maven.persistencia.JPAUtil;
+import br.com.cfj.piuc10_maven.persistencia.Helper;
 import jakarta.persistence.EntityManager;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -11,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -24,14 +24,16 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtObs;
     private javax.swing.JScrollPane jScrollPanel;
+    private Helper familiaHelper;
     private boolean pesquisarClicado = false;
     private boolean updating = false;
     private CadFamilia familiaAlterar = null;
 
     public TelaListagemFamilia() {
         initComponents();
-        carregarDados();
+        familiaHelper = new Helper();
 
+        //carregarDados();
         jPanel3 = new JPanel();
         jPanel3.setSize(800, 50);
         jPanel3.setLayout(new GridLayout(3, 1));
@@ -56,38 +58,7 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
 
         try {
             configurarTabela();
-            carregarDados();
-
-            tblFamilia.getModel().addTableModelListener(event -> {
-                if (event.getType() == TableModelEvent.UPDATE) {
-                    int row = event.getFirstRow();
-                    DefaultTableModel model = (DefaultTableModel) tblFamilia.getModel();
-
-                    CadFamilia familia = new CadFamilia();
-                    familia.setId((Integer) model.getValueAt(row, 0));
-                    familia.setNomeFamilia((String) model.getValueAt(row, 1));
-                    familia.setNrFamilia(Integer.parseInt(model.getValueAt(row, 2).toString()));
-                    familia.setEndereco((String) model.getValueAt(row, 3));
-                    familia.setObs((String) model.getValueAt(row, 4));
-
-                    linhasEditadas.add(row);
-
-                    System.out.println("Linha editada: " + row + ", Dados: " + familia);
-                }
-            });
-
-            tblFamilia.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    int selectedRow = tblFamilia.getSelectedRow();
-                    if (selectedRow != -1) {
-                        DefaultTableModel model = (DefaultTableModel) tblFamilia.getModel();
-                        txtNomeFamilia.setText((String) model.getValueAt(selectedRow, 1));
-                        txtNrIndividuo.setText(model.getValueAt(selectedRow, 2).toString());
-                        txtEndereco.setText((String) model.getValueAt(selectedRow, 3));
-                        txtObs.setText((String) model.getValueAt(selectedRow, 4));
-                    }
-                }
-            });
+            familiaHelper.carregarDadosFamilia((DefaultTableModel) tblFamilia.getModel());
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar os dados" + e.getMessage());
@@ -132,7 +103,7 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
         Endereco.setPreferredWidth(100);
     }
 
-    private void carregarDados() {
+    /* private void carregarDados() {
         updating = true;
         try {
             CadFamiliaDAO dao = new CadFamiliaDAO();
@@ -152,8 +123,7 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar os dados: " + e.getMessage());
         }
-    }
-
+    }*/
     private void pesquisar(List<CadFamilia> listaFamilia) {
         updating = true;
         try {
@@ -208,7 +178,8 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Alteração salvas com sucesso");
 
             linhasEditadas.clear();
-            carregarDados();
+            familiaHelper.carregarDadosFamilia((DefaultTableModel) tblFamilia.getModel());
+            // carregarDados();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -474,14 +445,11 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        if (pesquisarClicado) {
-            carregarDados();
-            pesquisarClicado = false;
-        } else {
-            TelaMenu menu = new TelaMenu();
-            menu.setVisible(true);
-            dispose();
-        }
+
+        TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+        dispose();
+
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
