@@ -241,13 +241,15 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListaIndividuoActionPerformed
 
     private void btnListaFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaFamiliaActionPerformed
-       TelaListagemFamilia f = new TelaListagemFamilia();
-       f.setVisible(true);
-       dispose();
+        TelaListagemFamilia f = new TelaListagemFamilia();
+        f.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnListaFamiliaActionPerformed
 
     private void btnConsultaFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaFamiliaActionPerformed
-        // TODO add your handling code here:
+        TelaConsultaFamilia consulta = new TelaConsultaFamilia();
+        consulta.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnConsultaFamiliaActionPerformed
 
     /**

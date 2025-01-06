@@ -1,4 +1,3 @@
-
 package br.com.cfj.piuc10_maven.gui;
 
 import br.com.cfj.piuc10_maven.persistencia.CadFamilia;
@@ -10,9 +9,11 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
 
     public TelaConsultaFamilia() {
         initComponents();
-        
-        btnConsultar.setBackground(Color.ORANGE);
+
+        btnExcluir.setBackground(Color.ORANGE);
         btnVoltar.setBackground(Color.ORANGE);
+        btnAlterar.setBackground(Color.ORANGE);
+        btnConsultar.setBackground(Color.ORANGE);
     }
 
     @SuppressWarnings("unchecked")
@@ -30,13 +31,15 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObs = new javax.swing.JTextArea();
-        btnConsultar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         txtNomeFamilia = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
         txtNrIndividuo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
+        btnAlterar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,14 +92,14 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
         txtObs.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(185, 196, 202), 2, true));
         jScrollPane1.setViewportView(txtObs);
 
-        btnConsultar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
-        btnConsultar.setForeground(new java.awt.Color(0, 0, 0));
-        btnConsultar.setText("Consultar");
-        btnConsultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnConsultar.setOpaque(true);
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
+        btnExcluir.setText("Excluir");
+        btnExcluir.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnExcluir.setOpaque(true);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -150,6 +153,28 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
             }
         });
 
+        btnAlterar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAlterar.setText("Alterar");
+        btnAlterar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAlterar.setOpaque(true);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
+        btnConsultar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnConsultar.setForeground(new java.awt.Color(0, 0, 0));
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnConsultar.setOpaque(true);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -183,11 +208,16 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
                                     .addComponent(txtNomeFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(35, 35, 35))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,6 +247,8 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
@@ -261,27 +293,43 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        try{
-        int id = Integer.parseInt(txtID.getText());
-        
-        CadFamiliaDAO dao = new CadFamiliaDAO();
-        
-        CadFamilia f = dao.buscarPorId(id);
-        
-        if(f != null){
-        txtNomeFamilia.setText(f.getNomeFamilia());
-        txtEndereco.setText(f.getEndereco());
-        txtNrIndividuo.setText(String.valueOf(f.getNrFamilia()));
-        txtObs.setText(f.getObs());
-        }else {JOptionPane.showMessageDialog(this, "Família não encontrada");}
-        
-        }catch(NumberFormatException ex){
-        JOptionPane.showMessageDialog(this, "Digite um ID válido");
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            int id = Integer.parseInt(txtID.getText());
+
+            CadFamiliaDAO dao = new CadFamiliaDAO();
+
+            CadFamilia f = dao.buscarPorId(id);
+
+            if (f != null) {
+                int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir a família: " + f.getNomeFamilia() + "?",
+                        "Confirmação de Exclusão",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+                if (confirmacao == JOptionPane.YES_OPTION) {
+                    dao.excluir(id);
+                    JOptionPane.showMessageDialog(this, "Família excluída!");
+                    
+                    txtID.setText("");
+                    txtNomeFamilia.setText("");
+                    txtEndereco.setText("");
+                    txtNrIndividuo.setText("");
+                    txtObs.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Exclusão cancelada!");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Família não encontrada");
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Digite um ID válido");
         }
-    }//GEN-LAST:event_btnConsultarActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         TelaMenu menu = new TelaMenu();
@@ -300,6 +348,62 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        try {
+            int id = Integer.parseInt(txtID.getText());
+            String nomeFamilia = txtNomeFamilia.getText();
+            int nrFamilia = Integer.parseInt(txtNrIndividuo.getText());
+            String endereco = txtEndereco.getText();
+            String obs = txtObs.getText();
+
+            CadFamiliaDAO dao = new CadFamiliaDAO();
+            CadFamilia familiaConsultada = dao.buscarPorId(id);
+
+            if (familiaConsultada != null) {
+                familiaConsultada.setNomeFamilia(nomeFamilia);
+                familiaConsultada.setNrFamilia(nrFamilia);
+                familiaConsultada.setEndereco(endereco);
+                familiaConsultada.setObs(obs);
+
+                dao.update(familiaConsultada);
+
+                JOptionPane.showMessageDialog(this, "Familia atualizada");
+            } else {
+                JOptionPane.showMessageDialog(this, "Família não encontrada. Verifique o ID.");
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Preencha os campos corretamente. Verifique os números.");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar a família: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        try {
+            int id = Integer.parseInt(txtID.getText());
+
+            CadFamiliaDAO dao = new CadFamiliaDAO();
+
+            CadFamilia f = dao.buscarPorId(id);
+
+            if (f != null) {
+                txtNomeFamilia.setText(f.getNomeFamilia());
+                txtEndereco.setText(f.getEndereco());
+                txtNrIndividuo.setText(String.valueOf(f.getNrFamilia()));
+                txtObs.setText(f.getObs());
+                
+               
+            } else {
+                JOptionPane.showMessageDialog(this, "Individuo não encontrado", "Erro: ", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Digite ID válido", "Erro: ", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao consultar indivíduo: " + e.getMessage(), "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,7 +441,9 @@ public class TelaConsultaFamilia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -33,15 +33,12 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
         initComponents();
         familiaHelper = new Helper();
 
-        //carregarDados();
         jPanel3 = new JPanel();
         jPanel3.setSize(800, 50);
         jPanel3.setLayout(new GridLayout(3, 1));
         lblCabecalho.setForeground(Color.WHITE);
         lblCabecalhoDep.setForeground(Color.WHITE);
         btnPesquisar.setBackground(Color.ORANGE);
-        btnExcluir.setBackground(Color.ORANGE);
-        btnAlterar.setBackground(Color.ORANGE);
         btnVoltar.setBackground(Color.ORANGE);
 
         txtNomeFamilia = new javax.swing.JTextField();
@@ -103,27 +100,6 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
         Endereco.setPreferredWidth(100);
     }
 
-    /* private void carregarDados() {
-        updating = true;
-        try {
-            CadFamiliaDAO dao = new CadFamiliaDAO();
-            List<CadFamilia> listaFamilia = dao.listarTodas();
-            DefaultTableModel model = (DefaultTableModel) tblFamilia.getModel();
-            model.setRowCount(0);
-
-            for (CadFamilia familia : listaFamilia) {
-                model.addRow(new Object[]{
-                    familia.getId(),
-                    familia.getNomeFamilia(),
-                    familia.getNrFamilia(),
-                    familia.getEndereco(),
-                    familia.getObs()
-                });
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar os dados: " + e.getMessage());
-        }
-    }*/
     private void pesquisar(List<CadFamilia> listaFamilia) {
         updating = true;
         try {
@@ -137,52 +113,10 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
                     familia.getNrFamilia(),
                     familia.getEndereco(),
                     familia.getObs()
-
                 });
             }
         } finally {
             updating = false;
-        }
-    }
-
-    private void alterarDados() {
-        if (linhasEditadas.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nenhum linha editada");
-            return;
-        }
-        try {
-            CadFamiliaDAO dao = new CadFamiliaDAO();
-            DefaultTableModel model = (DefaultTableModel) tblFamilia.getModel();
-
-            for (Integer row : linhasEditadas) {
-                CadFamilia f = new CadFamilia();
-                f.setId((Integer) model.getValueAt(row, 0));
-                f.setNomeFamilia((String) model.getValueAt(row, 1));
-
-                Object nrIndividuosObj = model.getValueAt(row, 2);
-                if (nrIndividuosObj instanceof Integer) {
-                    f.setNrFamilia((Integer) nrIndividuosObj);
-                } else {
-                    try {
-                        f.setNrFamilia(Integer.parseInt(nrIndividuosObj.toString()));
-                    } catch (NumberFormatException e) {
-                        throw new IllegalArgumentException("Insira um número válido!");
-                    }
-                }
-                f.setEndereco((String) model.getValueAt(row, 3));
-                f.setObs((String) model.getValueAt(row, 4));
-
-                dao.update(f);
-            }
-
-            JOptionPane.showMessageDialog(this, "Alteração salvas com sucesso");
-
-            linhasEditadas.clear();
-            familiaHelper.carregarDadosFamilia((DefaultTableModel) tblFamilia.getModel());
-            // carregarDados();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -200,8 +134,6 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         filtroFamilia = new javax.swing.JTextField();
 
@@ -311,48 +243,22 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
-        btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
-        btnExcluir.setText("Excluir");
-        btnExcluir.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
-
-        btnAlterar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
-        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAlterar.setText("Alterar");
-        btnAlterar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(176, 176, 176)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
                 .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addGap(141, 141, 141))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 20, Short.MAX_VALUE))
         );
@@ -422,26 +328,15 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         try {
+            String filtro = filtroFamilia.getText();
             CadFamiliaDAO dao = new CadFamiliaDAO();
-            DefaultTableModel model = (DefaultTableModel) tblFamilia.getModel();
-
-            for (Integer row : linhasEditadas) {
-                CadFamilia familia = new CadFamilia();
-                familia.setId((Integer) model.getValueAt(row, 0));
-                familia.setNomeFamilia((String) model.getValueAt(row, 1));
-                familia.setNrFamilia(Integer.parseInt(model.getValueAt(row, 2).toString()));
-                familia.setEndereco((String) model.getValueAt(row, 3));
-                familia.setObs((String) model.getValueAt(row, 4));
-
-                dao.update(familia);
-            }
-
-            linhasEditadas.clear();
-            JOptionPane.showMessageDialog(this, "Dados atualizados");
+            List<CadFamilia> listaFamilia = dao.pesquisar(filtro);
+            pesquisar(listaFamilia);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao atualizar " + e.getMessage(), "Erro ", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
+        pesquisarClicado = true;
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -451,35 +346,6 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        try {
-            if (tblFamilia.getSelectedRow() >= 0) {
-
-                Object idObj = tblFamilia.getValueAt(tblFamilia.getSelectedRow(), 0);
-                String id = idObj != null ? idObj.toString() : "";
-                int resposta = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir o registro " + id + "?");
-                if (resposta == JOptionPane.YES_NO_OPTION) {
-                    CadFamiliaDAO dao = new CadFamiliaDAO();
-                    dao.excluir(Integer.parseInt(id));
-                    JOptionPane.showMessageDialog(this, "Registro excluído com sucesso");
-
-                    btnPesquisarActionPerformed(evt);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Selecione um registro");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocorreu uma falha:\n" + e.getMessage());
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-
-        alterarDados();
-
-    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -526,8 +392,6 @@ public class TelaListagemFamilia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JTextField filtroFamilia;
