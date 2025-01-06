@@ -45,9 +45,8 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         jPanel3.setLayout(new GridLayout(3, 1));
         lblCabecalho.setForeground(Color.WHITE);
         lblCabecalhoDep.setForeground(Color.WHITE);
-        btnPesquisar.setBackground(Color.ORANGE);
-        btnExcluir.setBackground(Color.ORANGE);
         btnVoltar.setBackground(Color.ORANGE);
+        btnPesquisar.setBackground(Color.ORANGE);
 
         try {
             configurarTabela();
@@ -119,7 +118,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     }
 //Transferir o método alterar para a nova tela de consulta individual de cada individuo
 
-    private void alterarDados() {
+  /*  private void alterarDados() {
 
         try {
             CadIndividuoDAO dao = new CadIndividuoDAO();
@@ -164,7 +163,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro: ", JOptionPane.ERROR_MESSAGE);
         }
-    }
+    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -180,8 +179,8 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         filtroIndividuo = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -232,17 +231,17 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
+                                .addGap(240, 240, 240)
                                 .addComponent(lblCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(129, 129, 129)
+                                .addGap(261, 261, 261)
                                 .addComponent(lblCabecalhoDep, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 382, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -263,7 +262,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 18, Short.MAX_VALUE)
         );
 
         jPanel3.setPreferredSize(new java.awt.Dimension(782, 50));
@@ -280,21 +279,11 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
 
         btnPesquisar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
         btnPesquisar.setForeground(new java.awt.Color(0, 0, 0));
-        btnPesquisar.setText("Alterar");
+        btnPesquisar.setText("Pesquisar");
         btnPesquisar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
-            }
-        });
-
-        btnExcluir.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
-        btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
-        btnExcluir.setText("Excluir");
-        btnExcluir.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -303,24 +292,27 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(131, 131, 131)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                .addGap(127, 127, 127)
-                .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                .addGap(117, 117, 117)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                .addGap(177, 177, 177))
+                .addGap(317, 317, 317)
+                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
+        jLabel7.setBackground(new java.awt.Color(49, 49, 106));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Digite Nome ");
+        jLabel7.setOpaque(true);
+
+        filtroIndividuo.setToolTipText("Digite o nome a ser pesquisado");
         filtroIndividuo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filtroIndividuoActionPerformed(evt);
@@ -332,15 +324,19 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(159, 159, 159)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(filtroIndividuo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(filtroIndividuo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(filtroIndividuo)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -364,7 +360,7 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -384,31 +380,17 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        try {
-            if (tblIndividuo.getSelectedRow() >= 0) {
-
-                Object idObj = tblIndividuo.getValueAt(tblIndividuo.getSelectedRow(), 0);
-                String id = idObj != null ? idObj.toString() : "";
-                int resposta = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir o registro " + id + "?");
-                if (resposta == JOptionPane.YES_NO_OPTION) {
-                    CadIndividuoDAO dao = new CadIndividuoDAO();
-                    dao.excluir(Integer.parseInt(id));
-                    JOptionPane.showMessageDialog(this, "Registro excluído com sucesso");
-
-                    btnPesquisarActionPerformed(evt);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Selecione um registro");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocorreu uma falha:\n" + e.getMessage());
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        alterarDados();
+        try {
+            String filtro = filtroIndividuo.getText();
+            CadIndividuoDAO dao = new CadIndividuoDAO();
+            List<CadIndividuo> listaIndividuo = dao.pesquisar(filtro);
+            pesquisar(listaIndividuo);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        pesquisarClicado = true;
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
@@ -450,10 +432,10 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JTextField filtroIndividuo;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
