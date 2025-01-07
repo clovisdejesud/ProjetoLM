@@ -2,6 +2,7 @@ package br.com.cfj.piuc10_maven.gui;
 
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuo;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuoDAO;
+import br.com.cfj.piuc10_maven.persistencia.Helper;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -360,23 +361,29 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
             cadInd.setNome(txtNome.getText());
             cadInd.setCpf(txtCPF.getText());
 
-            cadInd.setDataNasc(formatarData(txtDataNasc.getText()));
+            String data = txtDataNasc.getText();
+            if (Helper.validarData(data)) {
+                cadInd.setDataNasc(formatarData(data));
 
-            cadInd.setTelefone(txtTelefone.getText());
-            cadInd.setNomeFamilia(txtNomeFamilia.getText());
-            cadInd.setEscolaridade(txtEscolaridade.getText());
-            cadInd.setTrabalha(txtTrabalha.getText());
-            cadInd.setObs(txtObs.getText());
+                cadInd.setDataNasc(formatarData(txtDataNasc.getText()));
 
-            if (!txtNome.getText().isEmpty() && !txtNomeFamilia.getText().isEmpty()) {
-                CadIndividuoDAO daoInd = new CadIndividuoDAO();
-                daoInd.cadastrar(cadInd);
-                JOptionPane.showMessageDialog(this, "Indivíduo cadastrado!");
+                cadInd.setTelefone(txtTelefone.getText());
+                cadInd.setNomeFamilia(txtNomeFamilia.getText());
+                cadInd.setEscolaridade(txtEscolaridade.getText());
+                cadInd.setTrabalha(txtTrabalha.getText());
+                cadInd.setObs(txtObs.getText());
+
+                if (!txtNome.getText().isEmpty() && !txtNomeFamilia.getText().isEmpty()) {
+                    CadIndividuoDAO daoInd = new CadIndividuoDAO();
+                    daoInd.cadastrar(cadInd);
+                    JOptionPane.showMessageDialog(this, "Indivíduo cadastrado!");
+                } else {
+
+                    JOptionPane.showMessageDialog(this, "Erro! Campos vazios");
+                }
             } else {
-
-                JOptionPane.showMessageDialog(this, "Erro! Campos vazios");
+                JOptionPane.showMessageDialog(this, "Formato de data inválida");
             }
-
             txtNome.setText("");
             txtCPF.setText("");
             txtDataNasc.setText("");
