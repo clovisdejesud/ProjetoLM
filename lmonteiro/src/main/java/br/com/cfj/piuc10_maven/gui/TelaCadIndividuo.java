@@ -364,26 +364,26 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
             String data = txtDataNasc.getText();
             if (Helper.validarData(data)) {
                 cadInd.setDataNasc(formatarData(data));
-
-                cadInd.setDataNasc(formatarData(txtDataNasc.getText()));
-
-                cadInd.setTelefone(txtTelefone.getText());
-                cadInd.setNomeFamilia(txtNomeFamilia.getText());
-                cadInd.setEscolaridade(txtEscolaridade.getText());
-                cadInd.setTrabalha(txtTrabalha.getText());
-                cadInd.setObs(txtObs.getText());
-
-                if (!txtNome.getText().isEmpty() && !txtNomeFamilia.getText().isEmpty()) {
-                    CadIndividuoDAO daoInd = new CadIndividuoDAO();
-                    daoInd.cadastrar(cadInd);
-                    JOptionPane.showMessageDialog(this, "Indivíduo cadastrado!");
-                } else {
-
-                    JOptionPane.showMessageDialog(this, "Erro! Campos vazios");
-                }
             } else {
-                JOptionPane.showMessageDialog(this, "Formato de data inválida");
+                throw new IllegalArgumentException("Formato de data inválida");
             }
+            cadInd.setDataNasc(formatarData(txtDataNasc.getText()));
+
+            cadInd.setTelefone(txtTelefone.getText());
+            cadInd.setNomeFamilia(txtNomeFamilia.getText());
+            cadInd.setEscolaridade(txtEscolaridade.getText());
+            cadInd.setTrabalha(txtTrabalha.getText());
+            cadInd.setObs(txtObs.getText());
+
+            if (!txtNome.getText().isEmpty() && !txtNomeFamilia.getText().isEmpty()) {
+                CadIndividuoDAO daoInd = new CadIndividuoDAO();
+                daoInd.cadastrar(cadInd);
+                JOptionPane.showMessageDialog(this, "Indivíduo cadastrado!");
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Erro! Campos vazios");
+            }
+            
             txtNome.setText("");
             txtCPF.setText("");
             txtDataNasc.setText("");
