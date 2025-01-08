@@ -29,7 +29,6 @@ br\com\cfj\piuc10_maven\gui\TelaListagemFamilia$1.class
 br\com\cfj\piuc10_maven\persistencia\CadIndividuoDAO.class
 br\com\cfj\piuc10_maven\gui\TelaConsultaIndividuo.class
 br\com\cfj\piuc10_maven\gui\TelaMenu$4.class
-br\com\cfj\piuc10_maven\gui\TelaListagemIndividuo$6.class
 br\com\cfj\piuc10_maven\gui\TelaConsultaIndividuo$6.class
 br\com\cfj\piuc10_maven\gui\TelaMenu$3.class
 br\com\cfj\piuc10_maven\persistencia\JPAUtil.class

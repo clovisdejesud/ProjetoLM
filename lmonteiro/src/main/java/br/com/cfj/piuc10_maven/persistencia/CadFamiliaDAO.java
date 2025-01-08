@@ -97,4 +97,17 @@ public class CadFamiliaDAO {
         }
 
     }
+
+    public boolean verificarFamiliaExiste(String nomeFamilia) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            String jpql = "SELECT COUNT(f) FROM CadFamilia f WHERE f.nomeFamilia = :nomeFamilia";
+            Long count = em.createQuery(jpql, Long.class)
+                    .setParameter("nomeFamilia", nomeFamilia)
+                    .getSingleResult();
+            return count > 0;
+        } finally {
+            em.close();
+        }
+    }
 }

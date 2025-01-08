@@ -1,7 +1,9 @@
 package br.com.cfj.piuc10_maven.gui;
 
+import br.com.cfj.piuc10_maven.persistencia.CadFamiliaDAO;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuo;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuoDAO;
+import br.com.cfj.piuc10_maven.persistencia.Helper;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -360,10 +362,23 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
             cadInd.setNome(txtNome.getText());
             cadInd.setCpf(txtCPF.getText());
 
-            cadInd.setDataNasc(formatarData(txtDataNasc.getText()));
-
+            String data = txtDataNasc.getText();
+            if (Helper.validarData(data)) {
+                cadInd.setDataNasc(formatarData(data));
+            } else {
+                throw new IllegalArgumentException("Formato de data inválida");
+            }
+            
             cadInd.setTelefone(txtTelefone.getText());
+            
+            String nomeFamilia = txtNomeFamilia.getText();
+            CadFamiliaDAO dao = new CadFamiliaDAO();
+            
+            if (!dao.verificarFamiliaExiste(nomeFamilia)){
+            throw new IllegalArgumentException("Família não encontrada.");
+            }
             cadInd.setNomeFamilia(txtNomeFamilia.getText());
+            
             cadInd.setEscolaridade(txtEscolaridade.getText());
             cadInd.setTrabalha(txtTrabalha.getText());
             cadInd.setObs(txtObs.getText());
@@ -376,7 +391,7 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(this, "Erro! Campos vazios");
             }
-
+            
             txtNome.setText("");
             txtCPF.setText("");
             txtDataNasc.setText("");
@@ -386,9 +401,11 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
             txtTrabalha.setText("");
             txtObs.setText("");
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Erro de cadastro");
+            JOptionPane.showMessageDialog(this, "Erro de cadastro:" + e.getMessage());
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

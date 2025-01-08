@@ -5,9 +5,6 @@ import br.com.cfj.piuc10_maven.persistencia.CadIndividuoDAO;
 import br.com.cfj.piuc10_maven.persistencia.Helper;
 import java.awt.Color;
 import java.awt.GridLayout;
-//import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,9 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class TelaListagemIndividuo extends javax.swing.JFrame {
@@ -116,54 +110,6 @@ public class TelaListagemIndividuo extends javax.swing.JFrame {
             updating = false;
         }
     }
-//Transferir o método alterar para a nova tela de consulta individual de cada individuo
-
-  /*  private void alterarDados() {
-
-        try {
-            CadIndividuoDAO dao = new CadIndividuoDAO();
-            DefaultTableModel model = (DefaultTableModel) tblIndividuo.getModel();
-
-            for (Integer row : linhasEditadas) {
-                CadIndividuo i = new CadIndividuo();
-                i.setId((Integer) model.getValueAt(row, 0));
-                i.setNome((String) model.getValueAt(row, 1));
-                i.setCpf((String) model.getValueAt(row, 2));
-
-                Object dataObj = model.getValueAt(row, 3);
-
-                if (dataObj instanceof java.sql.Date) {
-                    i.setDataNasc((java.sql.Date) dataObj);
-                } else if (dataObj instanceof Date) {
-                    try {
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        Date utilDate = sdf.parse((String) dataObj);
-                        i.setDataNasc(new java.sql.Date(utilDate.getTime()));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                        // Trate o erro ou configure um valor padrão para a data
-                        i.setDataNasc(null);
-                    }
-                } else {i.setDataNasc(null);}
-
-                i.setTelefone((String) model.getValueAt(row, 4));
-                i.setNomeFamilia((String) model.getValueAt(row, 5));
-                i.setEscolaridade((String) model.getValueAt(row, 6));
-                i.setTrabalha((String) model.getValueAt(row, 7));
-                i.setObs((String) model.getValueAt(row, 8));
-
-                dao.update(i);
-            }
-
-            JOptionPane.showMessageDialog(this, "Alteração salvas com sucesso");
-
-            linhasEditadas.clear();
-            individuoHelper.carregarDadosIndividuo((DefaultTableModel) tblIndividuo.getModel());
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar as alterações" + e.getMessage(), "Erro: ", JOptionPane.ERROR_MESSAGE);
-        }
-    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

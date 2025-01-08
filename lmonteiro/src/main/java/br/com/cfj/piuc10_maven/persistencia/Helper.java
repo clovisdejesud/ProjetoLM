@@ -4,8 +4,28 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuo;
 import br.com.cfj.piuc10_maven.persistencia.CadIndividuoDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Helper {
+    public static boolean validarData(String data) {
+       
+        String regex = "\\d{2}/\\d{2}/\\d{4}";
+        if (!data.matches(regex)) {
+            return false;
+        }
+
+        try {
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false);
+            sdf.parse(data);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
 
     public void carregarDadosIndividuo(DefaultTableModel model) {
         CadIndividuoDAO dao = new CadIndividuoDAO();
