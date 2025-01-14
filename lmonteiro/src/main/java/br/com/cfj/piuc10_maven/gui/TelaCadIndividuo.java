@@ -392,9 +392,11 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void txtNomeFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFamiliaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeFamiliaActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void txtTrabalhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrabalhaActionPerformed
         // TODO add your handling code here:
@@ -404,11 +406,9 @@ public class TelaCadIndividuo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEscolaridadeActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        TelaMenu menu = new TelaMenu();
-        menu.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    private void txtNomeFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFamiliaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeFamiliaActionPerformed
 
     /**
      * @param args the command line arguments

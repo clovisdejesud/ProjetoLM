@@ -1,3 +1,4 @@
+C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaCadUsuario.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaCadIndividuo.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaMenu.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\CadFamiliaDAO.java
@@ -5,10 +6,16 @@ C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\CadFamilia.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaConsultaFamilia.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\CadIndividuo.java
+C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\CadUsuarioDAO.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaConsultaIndividuo.java
+C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\PasswordUtils.java
+C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\SenhasDAO.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\CadIndividuoDAO.java
+C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\CadUsuario.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\Helper.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaListagemFamilia.java
+C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaLogin.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaListagemIndividuo.java
+C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\Senhas.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\gui\TelaCadFamilia.java
 C:\Users\Clovis\OneDrive\Documentos\ProjetoLM\lmonteiro\src\main\java\br\com\cfj\piuc10_maven\persistencia\JPAUtil.java
