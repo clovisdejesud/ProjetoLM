@@ -12,7 +12,7 @@ public class SenhasDAO {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            throw new IllegalArgumentException("Erro ao cadastrar senha: " + e.getMessage());
+            throw new IllegalArgumentException("Erro ao cadastrar senha");
         } finally {
             em.close();
         }
@@ -26,7 +26,7 @@ public class SenhasDAO {
                     .setParameter("login", login)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Erro! " + e.getMessage());
+            throw new IllegalArgumentException("Erro!");
         } finally {
             em.close();
         }

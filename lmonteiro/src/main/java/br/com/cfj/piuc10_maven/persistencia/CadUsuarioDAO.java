@@ -25,7 +25,7 @@ public class CadUsuarioDAO {
                     .setParameter("login", login)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Erro ao recuperar ID do usuário: " + e.getMessage());
+            throw new IllegalArgumentException("Erro ao recuperar ID do usuário");
         } finally {
             em.close();
         }

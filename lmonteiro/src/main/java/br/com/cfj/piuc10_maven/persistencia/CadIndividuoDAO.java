@@ -88,7 +88,7 @@ public class CadIndividuoDAO {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar ");
             throw e;
         } finally {
             em.close();

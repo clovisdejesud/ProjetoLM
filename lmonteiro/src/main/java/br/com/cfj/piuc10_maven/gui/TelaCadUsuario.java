@@ -2,6 +2,7 @@ package br.com.cfj.piuc10_maven.gui;
 
 import br.com.cfj.piuc10_maven.persistencia.CadUsuario;
 import br.com.cfj.piuc10_maven.persistencia.CadUsuarioDAO;
+import br.com.cfj.piuc10_maven.persistencia.PasswordUtils;
 import br.com.cfj.piuc10_maven.persistencia.Senhas;
 import br.com.cfj.piuc10_maven.persistencia.SenhasDAO;
 import java.awt.Color;
@@ -358,36 +359,48 @@ public class TelaCadUsuario extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         CadUsuario user = new CadUsuario();
+        CadUsuarioDAO daoUser = new CadUsuarioDAO();
         Senhas passuser = new Senhas();
 
         try {
-            if(txtNomeUsuario.getText().isEmpty() || txtLogin.getText().isEmpty()){
-            throw new IllegalArgumentException("Preencha os campos obrigatórios");
+            if (txtNomeUsuario.getText().isEmpty() || txtLogin.getText().isEmpty()) {
+                throw new IllegalArgumentException("Preencha os campos obrigatórios");
             }
-            
-            if(!txtPass.getText().contentEquals(txtPassConf.getText())){
-            throw new IllegalArgumentException("As senhas devem ser iguais!");
+
+            if (txtCPF.getText().isEmpty() || txtEndereco.getText().isEmpty()) {
+                throw new IllegalArgumentException("Preencha os campos obrigatórios");
             }
+
+            if (txtPass.getText().isEmpty() || txtPassConf.getText().isEmpty()) {
+                throw new IllegalArgumentException("Insira uma senha de 8 digitos!");
+            }
+
+            if (!txtPass.getText().equals(txtPassConf.getText())) {
+                throw new IllegalArgumentException("As senhas devem ser iguais!");
+            }
+
+            if (PasswordUtils.isSequential(txtPass.getText())) {
+                throw new IllegalArgumentException("A senha não pode conter sequencias!");
+            }
+
             user.setNomeUsuario(txtNomeUsuario.getText());
             user.setCpf(txtCPF.getText());
             user.setTelefone(txtTelefone.getText());
             user.setEndereco(txtEndereco.getText());
             user.setLogin(txtLogin.getText());
 
-            CadUsuarioDAO daoUser = new CadUsuarioDAO();
             if (daoUser.verificarLoginIgual(user.getLogin())) {
                 throw new IllegalArgumentException("Login já existe! Escolha outro.");
             }
 
             daoUser.cadastrarUsuario(user);
-            
+
             int userId = daoUser.recuperarIdPorLogin(user.getLogin());
-            
+
             passuser.setId_usuario(userId);
             passuser.setPassword(txtPass.getText());
             passuser.setData(LocalDateTime.now());
-            
-           
+
             SenhasDAO daoPass = new SenhasDAO();
             daoPass.cadastrarSenha(passuser);
 
